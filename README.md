@@ -1,5 +1,5 @@
 # WumboWhowies
 Whowies, just wow
 
-Developmental Documents: 
+Development Documents: 
 https://tinyurl.com/CS3733-BWH-TeamW
