@@ -1,6 +1,6 @@
 # BWH Medical Service Request System
 
-[![Java 11](https://img.shields.io/badge/Java-11-007396.svg)](wApplication/build.gradle)
+[![Runs on JDK 11](https://img.shields.io/badge/runs_on-JDK_11-007396.svg)](#install-and-run)
 [![JavaFX 18](https://img.shields.io/badge/JavaFX-18-0d6efd.svg)](wApplication/build.gradle)
 [![Gradle](https://img.shields.io/badge/build-Gradle-02303a.svg)](wApplication/build.gradle)
 [![Apache Derby](https://img.shields.io/badge/database-Apache_Derby-d22128.svg)](wApplication/build.gradle)
@@ -18,7 +18,7 @@ Built in spring 2022 by Team W of WPI's CS 3733 Software Engineering course, an 
 - **Equipment tracking.** Beds, infusion pumps, recliners and X-ray machines carry an id, a type, a location and a status. The equipment list and the dashboard read the same records.
 - **Dashboard.** Progress gauges per equipment type, and alerts such as six dirty beds on a floor.
 - **Map editor.** Floor plans for five floors, two lower levels, the ground floor and a side elevation. Toggle locations, equipment and requests as dots, pan and scale the map, and add or edit a location in place.
-- **Accounts.** Login with hashed and salted passwords and nine roles with access levels (admin, doctor, nurse, staff, security, sanitation, technician, language interpreter).
+- **Accounts.** Login with hashed and salted passwords and eight roles with access levels (admin, doctor, nurse, staff, security, sanitation, technician, language interpreter), plus a denied level.
 - **Messaging, profiles and extras.** A group-chat page, employee profiles with pictures, an emergency button, a help page, and two mini-games.
 - **CSV in and out.** Every table loads from the CSV files under `wApplication/CSVs/` at start and exports back to CSV.
 - **Partner APIs.** Three jars from sister teams (language interpretation, external transport, a transfer API) plug into an API hub page.
@@ -29,14 +29,14 @@ Built in spring 2022 by Team W of WPI's CS 3733 Software Engineering course, an 
 
 ## How it is built
 
-A JavaFX 18 application on Java 11 with JFoenix controls, built by Gradle 6 with the OpenJFX plugin. The code is three layers under `edu.wpi.cs3733.d22.teamW`: `wApp` holds the FXML views, their controllers and custom controls (hospital map, request table, employee table, filters); `wDB` holds the DAO interfaces and implementations, the manager singletons, the entities and enums, a request facade and factory, and the CSV controller; `wMid` holds `Main`, which seeds an embedded Apache Derby database from the CSVs and launches the JavaFX `App`. Page, window, account and transition managers sit in `Managers`. Tests use JUnit 5 and TestFX against the database layer.
+A JavaFX 18 application with JFoenix controls, built by Gradle 6 with the OpenJFX plugin. The build files pin no Java version; the screenshots above come from a build and run on JDK 11. The code is three layers under `edu.wpi.cs3733.d22.teamW`: `wApp` holds the FXML views, their controllers and custom controls (hospital map, request table, employee table, filters); `wDB` holds the DAO interfaces and implementations, the manager singletons, the entities and enums, a request facade and factory, and the CSV controller; `wMid` holds `Main`, which seeds an embedded Apache Derby database from the CSVs and launches the JavaFX `App`. Page, window, account and transition managers sit in `Managers`. Tests use JUnit 5 against the database layer (TestFX is declared but no test uses it).
 
 ## Install and run
 
 ```bash
 git clone https://github.com/phbui/BWH-Medical-Service-Request-System.git
 cd BWH-Medical-Service-Request-System/wApplication
-./gradlew run          # Java 11 or newer with JavaFX resolved by the Gradle plugin
+./gradlew run          # JDK 11 works, with JavaFX resolved by the Gradle plugin
 ./gradlew test         # database-layer tests
 ./gradlew jar          # a runnable jar with Main-Class set
 ```
@@ -60,7 +60,7 @@ wApplication/
 
 ## Credits
 
-Team W (WumboWhowies), WPI CS 3733 Software Engineering, D term 2022. Contributors on GitHub: phbui, epoll31, EdisonZhang0202, cscopetski, charkw, NhiNguyencmt8, hzgand and jasonodell2001. Development documents: https://tinyurl.com/CS3733-BWH-TeamW.
+Team W (The Wumbo Whowies), Professor Wong's WPI CS 3733 Software Engineering course, spring 2022, in collaboration with Brigham and Women's Hospital. From the app's About page: lead software engineer Ethan Pollack, assistant leads Edison Zhang and Jason Odell, back-end engineers Caleb Scopetski and Hasan Gandor, front-end engineers Philip Bui and Jack McEvoy, project manager Charlie Kneissl-Williams, scrum master Edward Enyedy, product owner Leona (Nhi) Nguyen and documentation analyst Dylan Olmsted, with team coach Matthew Spofford. The hospital maps and data are copyrighted and provided for educational use only. Development documents: https://tinyurl.com/CS3733-BWH-TeamW.
 
 ## License
 
